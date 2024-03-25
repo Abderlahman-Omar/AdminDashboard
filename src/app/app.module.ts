@@ -14,6 +14,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductDetailsComponent } from './dashboard/ProductDetails/product-details/product-details.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { SideBarComponent } from './components/SideBar/side-bar/side-bar.component';
+import { TopBarComponent } from './components/TopBar/top-bar/top-bar.component';
+import { MainLayoutComponent } from './shared/layouts/main-layout/main-layout.component';
+import { NotFoundComponent } from './dashboard/NotFound/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,10 @@ import { CommonModule } from '@angular/common';
     ProductsPageComponent,
     UsersPageComponent,
     ProductDetailsComponent,
+    SideBarComponent,
+    TopBarComponent,
+    MainLayoutComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
