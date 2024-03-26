@@ -1,4 +1,25 @@
-<section *ngFor="let department of departments" class="w-screen">
+<section *ngFor="let department of departments" class="w-fit">
+  <button
+    class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md right-60 mt-4 z-50 absolute bg-emerald-400 py-2 px-2 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-500"
+  >
+    <svg
+      class="w-6 h-6 text-white-800 dark:text-white"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"
+      />
+    </svg>
+  </button>
   <div
     class="m-4 mx-auto max-w-screen-lg rounded-md border border-gray-100 text-gray-600 shadow-md"
   >
@@ -9,76 +30,19 @@
             {{ department.title }}
           </h2>
         </div>
-        <div class="mt-8 flex flex-col sm:flex-row">
-          <button
-            data-modal-target="default-modal"
-            data-modal-toggle="default-modal"
-            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition duration-150 ease-in-out hover:translate-y-1"
-            type="button"
-          >
-            View Categories
-          </button>
 
-          <div
-            id="default-modal"
-            tabindex="-1"
-            aria-hidden="true"
-            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
-          >
-            <div class="relative p-4 w-full max-w-2xl max-h-full">
-              <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <div
-                  class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
-                >
-                  <h2 class="mb-2 text-2xl font-black">
-                    {{ department.title }}
-                  </h2>
-                  <button
-                    type="button"
-                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="default-modal"
-                  >
-                    <svg
-                      class="w-3 h-3"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 14"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                      />
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                  </button>
-                </div>
-                <div class="grid grid-cols-12 gap-4">
-                  <p
-                    *ngFor="let category of department.categories"
-                    class="col-span-4 mt-3 ml-5 cursor-pointer font-sans text-base tracking-normal"
-                  >
-                    {{ category }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="grid grid-cols-12 gap-4">
-          <p
+        <div class="flex flex-row flex-wrap m-5">
+          <button
             *ngFor="let category of department.categories"
-            class="col-span-2 mt-3 cursor-pointer font-sans text-base tracking-normal"
+            type="button"
+            class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 h-16 w-24 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-xs px-2 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
           >
             {{ category }}
-          </p>
-        </div> -->
+          </button>
+        </div>
       </div>
 
-      <div class="mx-auto flex items-center px-5 pt-1 md:p-8">
+      <div class="mx-auto my-auto flex items-center px-5 pt-1 md:p-8">
         <img
           class="block h-28 w-28 rounded-md shadow-lg"
           src="{{ department.imgLink }}"

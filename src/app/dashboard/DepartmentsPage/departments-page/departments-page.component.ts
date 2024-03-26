@@ -247,7 +247,7 @@ export class DepartmentsPageComponent implements OnInit {
         'Suncare & Tanning',
         ' Beauty Box',
         'Walmart Start',
-        'BeautySpaceNK',
+        'Beauty Space NK',
         'Cury Hair & More Store',
         'Shop All Premium Beauty',
         'Makeup',
