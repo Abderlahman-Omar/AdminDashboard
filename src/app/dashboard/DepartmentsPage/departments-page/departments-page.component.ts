@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from '../../../services/categories.service';
 
 @Component({
   selector: 'app-departments-page',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './departments-page.component.css',
 })
 export class DepartmentsPageComponent implements OnInit {
+  constructor(private categoriesService: CategoriesService) {}
+  newCategories: any[] = [];
+  newDepartments: any[] = [];
   departments: any[] = [
     {
       id: '1',
@@ -556,5 +560,12 @@ export class DepartmentsPageComponent implements OnInit {
     },
   ];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.categoriesService.getDepartment().subscribe({
+      next: (response) => (this.newDepartments = response),
+    });
+    this.categoriesService.getCategory().subscribe({
+      next: (response) => (this.newCategories = response),
+    });
+  }
 }

@@ -10,6 +10,8 @@ import { DepartmentsPageComponent } from './dashboard/DepartmentsPage/department
 import { OrdersPageComponent } from './dashboard/OrdersPage/orders-page/orders-page.component';
 import { UsersPageComponent } from './dashboard/UsersPage/users-page/users-page.component';
 import { NotFoundComponent } from './dashboard/NotFound/not-found/not-found.component';
+import { CategoriesPageComponent } from './dashboard/CategoriesPage/categories-page/categories-page.component';
+import { SubCategoriesPageComponent } from './dashboard/sub-categories-page/sub-categories-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard/home', pathMatch: 'full' },
@@ -24,6 +26,8 @@ const routes: Routes = [
       { path: 'orders', component: OrdersPageComponent },
       { path: 'products', component: ProductsPageComponent },
       { path: 'productsdetails/:id', component: ProductDetailsComponent },
+      { path: 'categories/:id', component: CategoriesPageComponent },
+      { path: 'subcategories/:id', component: SubCategoriesPageComponent },
       { path: 'users', component: UsersPageComponent },
     ],
   },

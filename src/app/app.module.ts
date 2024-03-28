@@ -10,14 +10,20 @@ import { LoginPageComponent } from './dashboard/LoginPage/login-page/login-page.
 import { OrdersPageComponent } from './dashboard/OrdersPage/orders-page/orders-page.component';
 import { ProductsPageComponent } from './dashboard/ProductsPage/products-page/products-page.component';
 import { UsersPageComponent } from './dashboard/UsersPage/users-page/users-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withFetch,
+} from '@angular/common/http';
 import { ProductDetailsComponent } from './dashboard/ProductDetails/product-details/product-details.component';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, provideRouter } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SideBarComponent } from './components/SideBar/side-bar/side-bar.component';
 import { TopBarComponent } from './components/TopBar/top-bar/top-bar.component';
 import { MainLayoutComponent } from './shared/layouts/main-layout/main-layout.component';
 import { NotFoundComponent } from './dashboard/NotFound/not-found/not-found.component';
+import { CategoriesPageComponent } from './dashboard/CategoriesPage/categories-page/categories-page.component';
+import { SubCategoriesPageComponent } from './dashboard/sub-categories-page/sub-categories-page.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +40,8 @@ import { NotFoundComponent } from './dashboard/NotFound/not-found/not-found.comp
     TopBarComponent,
     MainLayoutComponent,
     NotFoundComponent,
+    CategoriesPageComponent,
+    SubCategoriesPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +51,7 @@ import { NotFoundComponent } from './dashboard/NotFound/not-found/not-found.comp
     RouterLinkActive,
     CommonModule,
   ],
-  providers: [],
+  providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

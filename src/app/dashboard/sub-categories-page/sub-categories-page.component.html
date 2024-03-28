@@ -1,4 +1,4 @@
-<section *ngFor="let department of departments" class="w-fit">
+<section class="w-fit">
   <div
     class="m-4 mx-auto max-w-screen-lg rounded-md border bg-white border-gray-100 text-gray-600 shadow-md"
   >
@@ -6,28 +6,15 @@
       <div class="relative p-8 md:w-4/6">
         <div class="flex flex-col md:flex-row">
           <h2 class="mb-2 text-2xl font-black">
-            {{ department.title }}
+            {{ subCategoryDetails.title }}
           </h2>
-        </div>
-
-        <div class="flex flex-row flex-wrap m-5">
-          @for(category of department.categories; track $index){
-          <button
-            [routerLink]="['/dashboard/categories', $index]"
-            routerLinkActive="active"
-            type="button"
-            class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 h-16 w-24 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-xs px-2 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-          >
-            {{ category }}
-          </button>
-          }
         </div>
       </div>
 
       <div class="mx-auto my-auto flex items-center px-5 pt-1 md:p-8">
         <img
           class="block h-32 w-32 rounded-md"
-          src="{{ department.imgLink }}"
+          src="{{ subCategoryDetails.imgLink }}"
           alt="Shop image"
         />
       </div>
