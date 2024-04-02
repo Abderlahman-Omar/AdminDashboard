@@ -37,9 +37,11 @@ export class ProductsPageComponent implements OnInit, OnChanges {
   }
 
   deleteProduct(productId: string) {
-    this.productsService.removeProduct(productId).subscribe({
-      next: (response) => this.updateData(),
-    });
+    if (confirm('Are You Sure ?')) {
+      this.productsService.removeProduct(productId).subscribe({
+        next: (response) => this.updateData(),
+      });
+    }
   }
   updateProduct(id: any) {
     this.router.navigate(['/dashboard/updateproduct', id]);
