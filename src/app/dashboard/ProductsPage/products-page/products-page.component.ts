@@ -1,18 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products-page',
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.css',
+  changeDetection: ChangeDetectionStrategy.Default,
 })
-export class ProductsPageComponent implements OnInit {
+export class ProductsPageComponent implements OnInit, OnChanges {
   products: any[] = [];
-  constructor(private productsService: ProductsService) {}
+  newProducts: any[] = [];
+  product: any;
+  productId: any;
+  constructor(
+    private productsService: ProductsService,
+    private router: Router
+  ) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    this.products = this.newProducts;
+  }
 
   ngOnInit(): void {
+    this.updateData();
+  }
+  updateData() {
     this.productsService.getProducts().subscribe({
-      next: (response) => (this.products = response.data),
+      next: (response) => (this.products = response),
     });
+  }
+
+  deleteProduct(productId: string) {
+    this.productsService.removeProduct(productId).subscribe({
+      next: (response) => this.updateData(),
+    });
+  }
+  updateProduct() {
+    this.productsService
+      .updateProduct(this.product, this.productId)
+      .subscribe((response) => {
+        console.log(response);
+      });
   }
 }

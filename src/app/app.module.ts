@@ -24,6 +24,7 @@ import { MainLayoutComponent } from './shared/layouts/main-layout/main-layout.co
 import { NotFoundComponent } from './dashboard/NotFound/not-found/not-found.component';
 import { CategoriesPageComponent } from './dashboard/CategoriesPage/categories-page/categories-page.component';
 import { SubCategoriesPageComponent } from './dashboard/sub-categories-page/sub-categories-page.component';
+import { FormsModule, NgModel } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { SubCategoriesPageComponent } from './dashboard/sub-categories-page/sub-
     RouterLink,
     RouterLinkActive,
     CommonModule,
+    FormsModule,
   ],
   providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent],

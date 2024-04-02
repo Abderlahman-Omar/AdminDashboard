@@ -23,9 +23,15 @@ export class ProductDetailsComponent implements OnInit {
     });
     this.productService.getProductDetails(this.productId).subscribe({
       next: (response) => {
-        console.log(response.data);
-        this.productDetails = response.data;
+        console.log(response);
+        this.productDetails = response;
       },
     });
+    // this.productService.getProductDetails(this.productId).subscribe({
+    //   next: (response) => {
+    //     console.log(response.data);
+    //     this.productDetails = response.data;
+    //   },
+    // });
   }
 }
