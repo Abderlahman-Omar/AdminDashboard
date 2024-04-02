@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, catchError, retry, throwError } from 'rxjs';
+import { IProduct } from '../Interfaces/iproduct';
 
 @Injectable({
   providedIn: 'root',
@@ -19,14 +20,18 @@ export class ProductsService {
   removeProduct(id: string): Observable<any> {
     return this.httpClient.delete(`http://localhost:3000/api/products/${id}`);
   }
-  addNewProduct(prd: any): Observable<any> {
+  addNewProduct(prd: IProduct): Observable<IProduct> {
     return this.httpClient
-      .post<any>(`http://localhost:3000/api/products`, JSON.stringify(prd), {
-        headers: {
-          // 'authorization':'ssdsdssds'
-          'content-type': 'application/json',
-        },
-      })
+      .post<IProduct>(
+        `http://localhost:3000/api/products`,
+        JSON.stringify(prd),
+        {
+          headers: {
+            // 'authorization':'ssdsdssds'
+            'content-type': 'application/json',
+          },
+        }
+      )
       .pipe(
         retry(2),
         catchError((err: HttpErrorResponse) => {

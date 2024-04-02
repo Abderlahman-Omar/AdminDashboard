@@ -12,6 +12,8 @@ import { UsersPageComponent } from './dashboard/UsersPage/users-page/users-page.
 import { NotFoundComponent } from './dashboard/NotFound/not-found/not-found.component';
 import { CategoriesPageComponent } from './dashboard/CategoriesPage/categories-page/categories-page.component';
 import { SubCategoriesPageComponent } from './dashboard/sub-categories-page/sub-categories-page.component';
+import { AddProductPageComponent } from './dashboard/AddProductPage/add-product-page/add-product-page.component';
+import { UpdateProductPageComponent } from './dashboard/UpdateProductPage/update-product-page/update-product-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard/home', pathMatch: 'full' },
@@ -26,6 +28,9 @@ const routes: Routes = [
       { path: 'orders', component: OrdersPageComponent },
       { path: 'products', component: ProductsPageComponent },
       { path: 'productsdetails/:id', component: ProductDetailsComponent },
+      { path: 'addproduct', component: AddProductPageComponent },
+      { path: 'updateproduct/:id', component: UpdateProductPageComponent },
+
       { path: 'categories/:id', component: CategoriesPageComponent },
       { path: 'subcategories/:id', component: SubCategoriesPageComponent },
       { path: 'users', component: UsersPageComponent },

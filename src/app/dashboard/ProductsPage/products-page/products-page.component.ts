@@ -41,11 +41,7 @@ export class ProductsPageComponent implements OnInit, OnChanges {
       next: (response) => this.updateData(),
     });
   }
-  updateProduct() {
-    this.productsService
-      .updateProduct(this.product, this.productId)
-      .subscribe((response) => {
-        console.log(response);
-      });
+  updateProduct(id: any) {
+    this.router.navigate(['/dashboard/updateproduct', id]);
   }
 }

@@ -25,6 +25,8 @@ import { NotFoundComponent } from './dashboard/NotFound/not-found/not-found.comp
 import { CategoriesPageComponent } from './dashboard/CategoriesPage/categories-page/categories-page.component';
 import { SubCategoriesPageComponent } from './dashboard/sub-categories-page/sub-categories-page.component';
 import { FormsModule, NgModel } from '@angular/forms';
+import { UpdateProductPageComponent } from './dashboard/UpdateProductPage/update-product-page/update-product-page.component';
+import { AddProductPageComponent } from './dashboard/AddProductPage/add-product-page/add-product-page.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { FormsModule, NgModel } from '@angular/forms';
     NotFoundComponent,
     CategoriesPageComponent,
     SubCategoriesPageComponent,
+    UpdateProductPageComponent,
+    AddProductPageComponent,
   ],
   imports: [
     BrowserModule,
