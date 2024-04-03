@@ -24,7 +24,12 @@ import { MainLayoutComponent } from './shared/layouts/main-layout/main-layout.co
 import { NotFoundComponent } from './dashboard/NotFound/not-found/not-found.component';
 import { CategoriesPageComponent } from './dashboard/CategoriesPage/categories-page/categories-page.component';
 import { SubCategoriesPageComponent } from './dashboard/sub-categories-page/sub-categories-page.component';
-import { FormsModule, NgModel } from '@angular/forms';
+import {
+  FormGroup,
+  FormsModule,
+  NgModel,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { UpdateProductPageComponent } from './dashboard/UpdateProductPage/update-product-page/update-product-page.component';
 import { AddProductPageComponent } from './dashboard/AddProductPage/add-product-page/add-product-page.component';
 
@@ -56,6 +61,7 @@ import { AddProductPageComponent } from './dashboard/AddProductPage/add-product-
     RouterLinkActive,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent],

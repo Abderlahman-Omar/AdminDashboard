@@ -58,7 +58,7 @@
             <button
               (click)="updateProduct(product.id)"
               id="updateProductButton"
-              class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md bg-emerald-400 py-2 px-8 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-500"
+              class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md border bg-emerald-500 py-2 px-8 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-800"
               type="button"
             >
               <svg
@@ -85,9 +85,7 @@
 
           <button
             (click)="deleteProduct(product.id)"
-            data-modal-target="popup-modal"
-            data-modal-toggle="popup-modal"
-            class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md border py-2 px-8 text-center text-white bg-rose-500 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-rose-500 hover:text-white"
+            class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md border py-2 px-8 text-center text-white bg-rose-500 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-rose-800 hover:text-white"
             type="button"
           >
             <svg
@@ -240,6 +238,23 @@
     </div>
   </div>
 </section>
+
+<div class="flex ml-28">
+  <a
+    (click)="pageChangeEvent(currentPage + 1)"
+    class="flex items-center cursor-pointer justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-rose-500 hover:text-white"
+  >
+    Previous
+  </a>
+
+  <a
+    (click)="pageChangeEvent(currentPage + 1)"
+    class="flex items-center cursor-pointer justify-center px-4 h-10 ms-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-500 hover:text-white"
+  >
+    Next
+  </a>
+</div>
+
 <!-- <div
   id="drawer-update-product-default"
   class="fixed top-0 left-0 z-40 w-full h-screen max-w-xs p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800"

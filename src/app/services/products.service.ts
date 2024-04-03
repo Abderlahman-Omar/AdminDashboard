@@ -10,8 +10,10 @@ import { IProduct } from '../Interfaces/iproduct';
 export class ProductsService {
   constructor(private httpClient: HttpClient) {}
 
-  getProducts(): Observable<any> {
-    return this.httpClient.get('http://localhost:3000/api/products?limit=10');
+  getProducts(page: any): Observable<any> {
+    return this.httpClient.get(
+      `http://localhost:3000/api/products?limit=10&page=${page}`
+    );
   }
   getProductDetails(id: string): Observable<any> {
     return this.httpClient.get(`http://localhost:3000/api/products/${id}`);
@@ -62,6 +64,15 @@ export class ProductsService {
         })
       );
   }
+
+  // nextPage() {
+  //   this.page = this.page + 1;
+  //   console.log(this.page);
+  // }
+  // previousPage() {
+  //   this.page = this.page - 1;
+  //   console.log(this.page);
+  // }
   // getProducts(): Observable<any> {
   //   return this.httpClient.get(
   //     'https://ecommerce.routemisr.com/api/v1/products'

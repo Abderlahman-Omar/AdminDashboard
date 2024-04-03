@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
 import { Router } from '@angular/router';
+import { IProduct } from '../../../Interfaces/iproduct';
 
 @Component({
   selector: 'app-products-page',
@@ -19,6 +20,7 @@ export class ProductsPageComponent implements OnInit, OnChanges {
   newProducts: any[] = [];
   product: any;
   productId: any;
+  currentPage: any = 1;
   constructor(
     private productsService: ProductsService,
     private router: Router
@@ -31,7 +33,7 @@ export class ProductsPageComponent implements OnInit, OnChanges {
     this.updateData();
   }
   updateData() {
-    this.productsService.getProducts().subscribe({
+    this.productsService.getProducts(this.currentPage).subscribe({
       next: (response) => (this.products = response),
     });
   }
@@ -46,4 +48,17 @@ export class ProductsPageComponent implements OnInit, OnChanges {
   updateProduct(id: any) {
     this.router.navigate(['/dashboard/updateproduct', id]);
   }
+  pageChangeEvent(event: number) {
+    if (event > 0) {
+      console.log(event);
+      this.currentPage = event;
+      this.updateData();
+    }
+  }
+  // nextPage() {
+  //   this.productsService.nextPage();
+  // }
+  // previousPage() {
+  //   this.productsService.previousPage();
+  // }
 }
