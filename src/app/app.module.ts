@@ -32,6 +32,7 @@ import {
 } from '@angular/forms';
 import { UpdateProductPageComponent } from './dashboard/UpdateProductPage/update-product-page/update-product-page.component';
 import { AddProductPageComponent } from './dashboard/AddProductPage/add-product-page/add-product-page.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { AddProductPageComponent } from './dashboard/AddProductPage/add-product-
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    NgApexchartsModule,
   ],
   providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
