@@ -49,6 +49,10 @@
         >
       </a>
     </div>
+
+    <h1 *ngIf="adminName" class="font-bold text-xl">
+      Welcome Back,{{ adminName }}!
+    </h1>
     <div class="flex items-center lg:order-2">
       <button
         type="button"

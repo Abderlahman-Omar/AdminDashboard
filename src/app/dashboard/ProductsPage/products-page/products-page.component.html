@@ -203,12 +203,12 @@
             Delete
           </button> -->
           <button
-            class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md border py-2 px-8 text-center text-grey-800 transition duration-150 ease-in-out hover:translate-y-1"
+            class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md border bg-blue-700 py-2 px-8 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-blue-800 hover:text-white"
             [routerLink]="['/dashboard/productsdetails', product.id]"
             routerLinkActive="active"
           >
             <svg
-              class="w-6 h-6 text-gray-800 dark:text-white"
+              class="w-6 h-6 text-white dark:text-white hover:text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -241,7 +241,7 @@
 
 <div class="flex ml-28">
   <a
-    (click)="pageChangeEvent(currentPage + 1)"
+    (click)="pageChangeEvent(currentPage - 1)"
     class="flex items-center cursor-pointer justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-rose-500 hover:text-white"
   >
     Previous

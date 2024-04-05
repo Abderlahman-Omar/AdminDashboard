@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
 import { Router } from '@angular/router';
-import { IProduct } from '../../../Interfaces/iproduct';
 
 @Component({
   selector: 'app-products-page',
@@ -55,10 +54,4 @@ export class ProductsPageComponent implements OnInit, OnChanges {
       this.updateData();
     }
   }
-  // nextPage() {
-  //   this.productsService.nextPage();
-  // }
-  // previousPage() {
-  //   this.productsService.previousPage();
-  // }
 }
