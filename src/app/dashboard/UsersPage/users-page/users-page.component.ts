@@ -51,6 +51,7 @@ export class UsersPageComponent implements OnInit {
           if (response.message === 'success') {
             localStorage.setItem('userToken', response.token);
             localStorage.setItem('Name', response.user.name);
+            localStorage.setItem('Email', response.user.email);
             this.authService.decodeUserData();
             //navigate login
             this.isLoading = false;

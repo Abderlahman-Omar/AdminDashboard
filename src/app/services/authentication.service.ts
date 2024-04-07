@@ -33,7 +33,9 @@ export class AuthenticationService {
   }
   logOut() {
     localStorage.removeItem('userToken');
+    localStorage.removeItem('Name');
+    localStorage.removeItem('Email');
     this.userData.next(null);
-    this.router.navigate(['/login']);
+    // this.router.navigate(['/dashboard/users']);
   }
 }

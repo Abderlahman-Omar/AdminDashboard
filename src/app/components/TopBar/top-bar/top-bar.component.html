@@ -50,9 +50,9 @@
       </a>
     </div>
 
-    <h1 *ngIf="adminName" class="font-bold text-xl">
+    <!-- <h1 *ngIf="adminName" class="font-bold text-xl">
       Welcome Back,{{ adminName }}!
-    </h1>
+    </h1> -->
     <div class="flex items-center lg:order-2">
       <button
         type="button"
@@ -589,11 +589,14 @@
       >
         <div class="px-4 py-3">
           <span
+            *ngIf="adminName"
             class="block text-sm font-semibold text-gray-900 dark:text-white"
-            >Neil Sims</span
+            >{{ adminName }}</span
           >
-          <span class="block text-sm text-gray-900 truncate dark:text-white"
-            >name&#64;flowbite.com</span
+          <span
+            *ngIf="adminMail"
+            class="block text-sm text-gray-900 truncate dark:text-white"
+            >{{ adminMail }}</span
           >
         </div>
         <ul
@@ -698,6 +701,7 @@
         >
           <li>
             <a
+              (click)="signOut()"
               href="#"
               class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >Sign out</a
