@@ -33,6 +33,10 @@ import {
 import { UpdateProductPageComponent } from './dashboard/UpdateProductPage/update-product-page/update-product-page.component';
 import { AddProductPageComponent } from './dashboard/AddProductPage/add-product-page/add-product-page.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { LineColumnAreaComponent } from './components/Charts/Line-Column-Area/line-column-area/line-column-area.component';
+import { LineAreaComponent } from './components/Charts/Line-Area/line-area/line-area.component';
+import { SimpleBubbleChartComponent } from './components/Charts/Simple-Bubble-Chart/simple-bubble-chart/simple-bubble-chart.component';
+import { DonutChartComponent } from './components/Charts/Donut-Chart/donut-chart/donut-chart.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,10 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     SubCategoriesPageComponent,
     UpdateProductPageComponent,
     AddProductPageComponent,
+    LineColumnAreaComponent,
+    LineAreaComponent,
+    SimpleBubbleChartComponent,
+    DonutChartComponent,
   ],
   imports: [
     BrowserModule,

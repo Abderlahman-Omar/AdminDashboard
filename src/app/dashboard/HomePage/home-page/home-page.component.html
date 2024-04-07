@@ -1,8 +1,14 @@
-<div>
-  <apx-chart
-    [series]="series"
-    [chart]="chart"
-    [xaxis]="xaxis"
-    [title]="title"
-  ></apx-chart>
+<div class="grid grid-cols-2 gap-2">
+  <div>
+    <app-line-column-area></app-line-column-area>
+  </div>
+  <div>
+    <app-line-area></app-line-area>
+  </div>
+  <div>
+    <app-simple-bubble-chart></app-simple-bubble-chart>
+  </div>
+  <div>
+    <app-donut-chart></app-donut-chart>
+  </div>
 </div>
