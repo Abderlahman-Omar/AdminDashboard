@@ -14,25 +14,67 @@ import { CategoriesPageComponent } from './dashboard/CategoriesPage/categories-p
 import { SubCategoriesPageComponent } from './dashboard/sub-categories-page/sub-categories-page.component';
 import { AddProductPageComponent } from './dashboard/AddProductPage/add-product-page/add-product-page.component';
 import { UpdateProductPageComponent } from './dashboard/UpdateProductPage/update-product-page/update-product-page.component';
+import { authGuardGuard } from './guards/Auth-Guard/auth-guard.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard/home', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
   {
     path: 'dashboard',
+
     component: MainLayoutComponent,
     children: [
-      { path: 'home', component: HomePageComponent },
-      { path: 'ads', component: AdsPageComponent },
-      { path: 'departments', component: DepartmentsPageComponent },
-      { path: 'orders', component: OrdersPageComponent },
-      { path: 'products', component: ProductsPageComponent },
-      { path: 'productsdetails/:id', component: ProductDetailsComponent },
-      { path: 'addproduct', component: AddProductPageComponent },
-      { path: 'updateproduct/:id', component: UpdateProductPageComponent },
+      {
+        path: 'home',
+        canActivate: [authGuardGuard],
+        component: HomePageComponent,
+      },
+      {
+        path: 'ads',
+        canActivate: [authGuardGuard],
+        component: AdsPageComponent,
+      },
+      {
+        path: 'departments',
+        canActivate: [authGuardGuard],
+        component: DepartmentsPageComponent,
+      },
+      {
+        path: 'orders',
+        canActivate: [authGuardGuard],
+        component: OrdersPageComponent,
+      },
+      {
+        path: 'products',
+        canActivate: [authGuardGuard],
+        component: ProductsPageComponent,
+      },
+      {
+        path: 'productsdetails/:id',
+        canActivate: [authGuardGuard],
+        component: ProductDetailsComponent,
+      },
+      {
+        path: 'addproduct',
+        canActivate: [authGuardGuard],
+        component: AddProductPageComponent,
+      },
+      {
+        path: 'updateproduct/:id',
+        canActivate: [authGuardGuard],
+        component: UpdateProductPageComponent,
+      },
 
-      { path: 'categories/:id', component: CategoriesPageComponent },
-      { path: 'subcategories/:id', component: SubCategoriesPageComponent },
+      {
+        path: 'categories/:id',
+        canActivate: [authGuardGuard],
+        component: CategoriesPageComponent,
+      },
+      {
+        path: 'subcategories/:id',
+        canActivate: [authGuardGuard],
+        component: SubCategoriesPageComponent,
+      },
       { path: 'users', component: UsersPageComponent },
     ],
   },
