@@ -39,6 +39,8 @@ import { SimpleBubbleChartComponent } from './components/Charts/Simple-Bubble-Ch
 import { DonutChartComponent } from './components/Charts/Donut-Chart/donut-chart/donut-chart.component';
 import { LineColumnComponent } from './components/Charts/Line-Column/line-column/line-column.component';
 import { ThreeDimensionsComponent } from './components/Charts/Three-Dimensions/three-dimensions/three-dimensions.component';
+import { RoundedHeatMapComponent } from './components/Charts/Rounded-Heat-Map/rounded-heat-map/rounded-heat-map.component';
+import { SparkLinesComponent } from './components/Charts/Spark-Lines/spark-lines/spark-lines.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { ThreeDimensionsComponent } from './components/Charts/Three-Dimensions/t
     DonutChartComponent,
     LineColumnComponent,
     ThreeDimensionsComponent,
+    RoundedHeatMapComponent,
+    SparkLinesComponent,
   ],
   imports: [
     BrowserModule,
