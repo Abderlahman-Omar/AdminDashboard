@@ -37,6 +37,8 @@ import { LineColumnAreaComponent } from './components/Charts/Line-Column-Area/li
 import { LineAreaComponent } from './components/Charts/Line-Area/line-area/line-area.component';
 import { SimpleBubbleChartComponent } from './components/Charts/Simple-Bubble-Chart/simple-bubble-chart/simple-bubble-chart.component';
 import { DonutChartComponent } from './components/Charts/Donut-Chart/donut-chart/donut-chart.component';
+import { LineColumnComponent } from './components/Charts/Line-Column/line-column/line-column.component';
+import { ThreeDimensionsComponent } from './components/Charts/Three-Dimensions/three-dimensions/three-dimensions.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { DonutChartComponent } from './components/Charts/Donut-Chart/donut-chart
     LineAreaComponent,
     SimpleBubbleChartComponent,
     DonutChartComponent,
+    LineColumnComponent,
+    ThreeDimensionsComponent,
   ],
   imports: [
     BrowserModule,
