@@ -4,5 +4,5 @@ export interface ICategory {
   id: string;
   title: string;
   imgLink: string;
-  subCategories: SubCategory[];
+  subCategories: number[];
 }

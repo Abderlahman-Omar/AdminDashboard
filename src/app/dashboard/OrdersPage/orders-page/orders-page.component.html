@@ -1,0 +1,151 @@
+<link
+  href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  * {
+    font-family: "Source Sans Pro";
+  }
+</style>
+
+<div class="w-screen bg-gray-50">
+  <div class="mx-auto max-w-screen-2xl px-2 py-10">
+    <div class="mt-6 overflow-hidden rounded-xl bg-white px-6 shadow lg:px-4">
+      <table
+        class="min-w-full border-collapse border-spacing-y-2 text-center border-spacing-x-2"
+      >
+        <thead class="hidden border-b lg:table-header-group">
+          <tr class="">
+            <td
+              class="whitespace-normal py-4 text-sm font-semibold text-gray-800 sm:px-3"
+            >
+              Id
+            </td>
+
+            <td
+              class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3"
+            >
+              User ID
+            </td>
+            <td
+              class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3"
+            >
+              Product Id
+            </td>
+            <td
+              class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3"
+            >
+              Quantity
+            </td>
+
+            <td
+              class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3"
+            >
+              Pick Up Options
+            </td>
+            <td
+              class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3"
+            >
+              Created At
+            </td>
+
+            <td
+              class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3"
+            >
+              Last Edit At
+            </td>
+
+            <td
+              class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3"
+            >
+              Arriving At
+            </td>
+
+            <td
+              class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-3"
+            >
+              Status
+            </td>
+          </tr>
+        </thead>
+        @for (list of orderList; track $index) {
+        <tbody class="bg-white lg:border-gray-300">
+          <tr class="">
+            <td
+              class="whitespace-no-wrap py-4 text-center text-sm text-gray-600 sm:px-3 lg:text-center"
+            >
+              {{ list.id }}
+            </td>
+
+            <td
+              class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-600 sm:px-3 lg:table-cell"
+            >
+              {{ list.userId }}
+            </td>
+
+            <td
+              class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-600 sm:px-3 lg:table-cell"
+            >
+              {{ list.productId }}
+            </td>
+
+            <td
+              class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-600 sm:px-3 lg:table-cell"
+            >
+              {{ list.quantity }}
+            </td>
+            <td
+              class="whitespace-no-wrap hidden py-4 text-center text-sm text-gray-600 sm:px-3 lg:table-cell lg:text-center"
+            >
+              {{ list.pickUpOptions }}
+            </td>
+            <td
+              class="whitespace-no-wrap hidden py-4 text-center text-sm text-gray-600 sm:px-3 lg:table-cell lg:text-center"
+            >
+              {{ list.createdAt }}
+            </td>
+            <td
+              class="whitespace-no-wrap hidden py-4 text-center text-sm text-gray-600 sm:px-3 lg:table-cell lg:text-center"
+            >
+              {{ list.lastEditAt }}
+            </td>
+            <td
+              class="whitespace-no-wrap py-4 text-right text-sm text-gray-600 sm:px-3 lg:text-center"
+            >
+              {{ list.arrivingAt }}
+            </td>
+
+            <td
+              id="orderStatus"
+              class="whitespace-no-wrap cursor-pointer hidden py-4 text-sm font-normal transition duration-150 ease-in-out hover:translate-y-1 text-gray-500 sm:px-3 lg:table-cell"
+            >
+              @if (list.status==="Unconfirmed") {
+              <button
+                type="button"
+                class="text-white bg-red-600 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-red-800 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              >
+                {{ list.status }}
+              </button>
+              } @if (list.status==="Confirmed") {
+              <button
+                type="button"
+                class="text-white bg-emerald-600 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-800 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              >
+                {{ list.status }}
+              </button>
+              } @if (list.status==="Shipped") {
+              <button
+                type="button"
+                class="text-white bg-yellow-500 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-yellow-800 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              >
+                {{ list.status }}
+              </button>
+              }
+            </td>
+          </tr>
+        </tbody>
+        }
+      </table>
+    </div>
+  </div>
+</div>

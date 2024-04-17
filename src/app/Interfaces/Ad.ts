@@ -1,5 +1,5 @@
 export interface Ad {
-  id: string;
+  id: number;
   title: string;
   imgLink: string;
   href: string;

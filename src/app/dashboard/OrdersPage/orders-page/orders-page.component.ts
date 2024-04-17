@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from '../../../services/Orders.service';
+import { Order } from '../../../Interfaces/Order';
 
 @Component({
   selector: 'app-orders-page',
@@ -6,7 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './orders-page.component.css',
 })
 export class OrdersPageComponent implements OnInit {
+  orderList: any[] = [];
+  constructor(private ordersService: OrdersService) {}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.updateLocalData();
   }
+  async updateLocalData() {
+    const { ordersData, error } = await this.ordersService.getAllOrders();
+    if (ordersData) {
+      this.orderList = ordersData;
+      // this.onClear();
+      console.log(ordersData);
+    }
+  }
+
+  // onClear() {
+  //   this.selectedId = null;
+  //   this.adTitleInput = '';
+  //   this.adImageInput = '';
+  //   this.isLoadingPage = false;
+  //   this.isLoadingModal = false;
+  // }
 }

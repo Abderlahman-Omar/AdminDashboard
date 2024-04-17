@@ -1,3 +1,4 @@
+import { SearchQuery } from './SearchQuery';
 import { ICategory } from './icategory';
 
 export interface Department {
@@ -5,4 +6,5 @@ export interface Department {
   title: string;
   imgLink: string;
   categories: ICategory[];
+  queries: SearchQuery[];
 }

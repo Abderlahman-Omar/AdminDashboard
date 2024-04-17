@@ -18,6 +18,12 @@ export class CategoriesPageComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.categoryId = params.get('id');
     });
+    // this.categoriesService
+    //   .getSingleCategory(this.categoryId)
+    //   .then(({ subCategoryData, error }) => {
+    //     this.subTitleInput = subCategoryData.title;
+    //     this.isLoadingModal = false;
+    //   });
     this.categoriesService.getCategoryDetails(this.categoryId).subscribe({
       next: (response) => {
         this.categoryDetails = response;
