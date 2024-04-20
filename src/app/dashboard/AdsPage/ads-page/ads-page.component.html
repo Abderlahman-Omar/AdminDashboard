@@ -1,4 +1,4 @@
-<section class="grid grid-cols-3 gap-12">
+<!-- <section class="grid grid-cols-3 gap-12">
   @for (list of adsList; track $index) {
   <div
     class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
@@ -17,4 +17,42 @@
     </div>
   </div>
   }
+</section> -->
+
+@if (isLoadingPage) {
+<section class="flex items-center justify-center w-full h-[650px]"></section>
+} @else {
+<section class="grid grid-cols-3 gap-6 m-12 bg-white dark:bg-gray-900">
+  @for (ad of adsList; track $index) {
+  <div class="overflow-hidden bg-white rounded-lg shadow dark:bg-gray-800">
+    <img [src]="ad.imgLink" class="object-cover w-full h-52" alt="" />
+    <div class="p-6">
+      <span class="block text-sm font-semibold text-slate-400"
+        >Ad id: {{ ad.id }}</span
+      >
+      <div class="pb-4 mt-3 text-lg font-bold">
+        <form class="py-5 mx-auto">
+          <input
+            type="text"
+            id="disabled-input"
+            aria-label="disabled input"
+            class="mb-5 bg-gray-100 border cursor-pointer border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            [value]="ad.title"
+            disabled
+          />
+          <input
+            type="text"
+            id="disabled-input-2"
+            aria-label="disabled input 2"
+            class="bg-gray-100 border border-gray-300 cursor-pointer text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            [value]="ad.imgLink"
+            disabled
+            readonly
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+  }
 </section>
+} \

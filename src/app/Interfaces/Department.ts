@@ -2,7 +2,7 @@ import { SearchQuery } from './SearchQuery';
 import { ICategory } from './icategory';
 
 export interface Department {
-  id: string;
+  id: number;
   title: string;
   imgLink: string;
   categories: ICategory[];

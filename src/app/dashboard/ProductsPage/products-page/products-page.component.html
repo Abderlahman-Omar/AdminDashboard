@@ -1,4 +1,4 @@
-<div class="mt-8 flex flex-col sm:flex-row">
+<!-- <div class="mt-8 flex flex-col sm:flex-row">
   <button
     [routerLink]="['/dashboard/addproduct']"
     routerLinkActive="active"
@@ -41,16 +41,176 @@
             class="ml-2 text-xs uppercase"
             >{{ product.subCategory }}</span
           >
-        </div>
-        <!-- <p class="mt-3 font-sans text-base tracking-normal">
+        </div> -->
+<!-- <p class="mt-3 font-sans text-base tracking-normal">
           {{ product.description.split(" ").slice(0, 30) }}
         </p> -->
+<!-- <div class="flex flex-col md:flex-row md:items-end">
+          <p class="mt-6 text-4xl font-black">
+            {{ product.originalPrice
+            }}<sup class="align-super text-sm">USD</sup>
+          </p> -->
+<!-- <span class="ml-2 text-xs uppercase">258 Sales</span> -->
+<!-- </div> -->
+<!-- <div class="mt-8 flex flex-col sm:flex-row">
+          <div class="text-center">
+            <button
+              (click)="updateProduct(product.id)"
+              id="updateProductButton"
+              class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md border bg-emerald-500 py-2 px-8 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-800"
+              type="button"
+            >
+              <svg
+                class="w-6 h-6 text-white-800 dark:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"
+                />
+              </svg>
+
+              Update
+            </button>
+          </div>
+
+          <button
+            (click)="deleteProduct(product.id)"
+            class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md border py-2 px-8 text-center text-white bg-rose-500 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-rose-800 hover:text-white"
+            type="button"
+          >
+            <svg
+              class="w-6 h-6 text-white-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"
+              />
+            </svg>
+
+            Delete
+          </button>
+
+          <button
+            class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md border bg-blue-700 py-2 px-8 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-blue-800 hover:text-white"
+            [routerLink]="['/dashboard/productsdetails', product.id]"
+            routerLinkActive="active"
+          >
+            <svg
+              class="w-6 h-6 text-white dark:text-white hover:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2"
+                d="M5 7h14M5 12h14M5 17h14"
+              />
+            </svg>
+
+            Details
+          </button>
+        </div>
+      </div>
+      <div class="mx-auto flex items-center px-5 pt-1 md:p-8">
+        <img
+          class="block h-48 max-w-full rounded-md"
+          src="{{ product.images[0] }}"
+          alt="Shop image"
+        />
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- <div class="flex ml-28">
+  <a
+    (click)="pageChangeEvent(currentPage - 1)"
+    class="flex items-center cursor-pointer justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-rose-500 hover:text-white"
+  >
+    Previous
+  </a>
+
+  <a
+    (click)="pageChangeEvent(currentPage + 1)"
+    class="flex items-center cursor-pointer justify-center px-4 h-10 ms-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-500 hover:text-white"
+  >
+    Next
+  </a>
+</div> -->
+<!-- /////////////////////////////////////////////// -->
+<div class="mt-8 flex flex-col sm:flex-row">
+  <button
+    [routerLink]="['/dashboard/addproduct']"
+    routerLinkActive="active"
+    class="mr-28 mb-4 :w-96 flex ml-auto cursor-pointer items-center justify-center rounded-md bg-blue-800 py-2 px-8 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-blue-800"
+  >
+    <svg
+      class="w-6 h-6 text-white dark:text-white"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+      />
+    </svg>
+
+    Add Product
+  </button>
+</div>
+
+<section *ngFor="let product of productsList" class="w-full">
+  <div
+    class="m-4 mx-auto max-w-screen-lg rounded-md bg-white border border-gray-100 text-gray-600 shadow-md"
+  >
+    <div class="relative flex h-full flex-col text-gray-600 md:flex-row">
+      <div class="relative p-8 md:w-4/6">
+        <div class="flex flex-col md:flex-row">
+          <h2 class="mb-2 text-2xl font-black">
+            {{ product.title.split(" ").slice(0, 2).join(" ") }}
+          </h2>
+          <!-- <span
+            *ngFor="let subCategory of product.subCatergory"
+            class="ml-2 text-xs uppercase"
+            >{{ product.subCatergory }}</span
+          > -->
+        </div>
+
         <div class="flex flex-col md:flex-row md:items-end">
           <p class="mt-6 text-4xl font-black">
             {{ product.originalPrice
             }}<sup class="align-super text-sm">USD</sup>
           </p>
-          <!-- <span class="ml-2 text-xs uppercase">258 Sales</span> -->
         </div>
         <div class="mt-8 flex flex-col sm:flex-row">
           <div class="text-center">
@@ -147,14 +307,14 @@
 
 <div class="flex ml-28">
   <a
-    (click)="pageChangeEvent(currentPage - 1)"
+    (click)="onPrevPage()"
     class="flex items-center cursor-pointer justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-rose-500 hover:text-white"
   >
     Previous
   </a>
 
   <a
-    (click)="pageChangeEvent(currentPage + 1)"
+    (click)="onNextPage()"
     class="flex items-center cursor-pointer justify-center px-4 h-10 ms-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-500 hover:text-white"
   >
     Next

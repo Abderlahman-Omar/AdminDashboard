@@ -7,14 +7,23 @@ export interface IProduct {
   id: string;
   title: string;
   images: string[];
-  brand: Brand;
+  brand: number;
   colors: string[];
-  seller: Seller;
+  seller: number;
   isBestSeller: boolean;
-  subCatergory: SubCategory;
+  subCatergory: number[];
   discount: number;
   originalPrice: number;
-  returnPolicy: Policy;
+  returnPolicy: number;
   isGiftable: boolean;
   quantity: number;
+  modelNumber: string;
+  aboutProduct: string;
+  productSpecification: string;
+  technicalDetails: string;
+  shippingWeight: string;
+  productDimensions: string;
+  warrenty: string;
+  reviews: number[];
+  variants: string[];
 }

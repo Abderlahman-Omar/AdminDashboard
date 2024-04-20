@@ -41,7 +41,7 @@ import { LineColumnComponent } from './components/Charts/Line-Column/line-column
 import { ThreeDimensionsComponent } from './components/Charts/Three-Dimensions/three-dimensions/three-dimensions.component';
 import { RoundedHeatMapComponent } from './components/Charts/Rounded-Heat-Map/rounded-heat-map/rounded-heat-map.component';
 import { SparkLinesComponent } from './components/Charts/Spark-Lines/spark-lines/spark-lines.component';
-import { Modal } from 'flowbite';
+import { Modal, initFlowbite } from 'flowbite';
 
 @NgModule({
   declarations: [

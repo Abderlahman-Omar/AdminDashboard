@@ -10,6 +10,28 @@ import { IProduct } from '../../../Interfaces/iproduct';
   styleUrl: './add-product-page.component.css',
 })
 export class AddProductPageComponent implements OnInit {
+  // categories: any;
+  // product: IProduct = {} as IProduct;
+  // productId: any;
+  // constructor(
+  //   private activatedRoute: ActivatedRoute,
+  //   private categoriesService: CategoriesService,
+  //   private productsService: ProductsService,
+  //   private router: Router
+  // ) {}
+  // ngOnInit(): void {
+  //   this.categoriesService.getCategory().subscribe({
+  //     next: (response) => {
+  //       this.categories = response;
+  //     },
+  //   });
+  // }
+  // addNewProduct() {
+  //   this.productsService.addNewProduct(this.product).subscribe((response) => {
+  //     this.router.navigateByUrl('/dashboard/products');
+  //   });
+  // }
+  ////////////////////////////////////////////////
   categories: any;
   product: IProduct = {} as IProduct;
   productId: any;
@@ -20,14 +42,12 @@ export class AddProductPageComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    this.categoriesService.getCategory().subscribe({
-      next: (response) => {
-        this.categories = response;
-      },
+    this.categoriesService.getAllCategories().then((response) => {
+      this.categories = response.categoriesData;
     });
   }
   addNewProduct() {
-    this.productsService.addNewProduct(this.product).subscribe((response) => {
+    this.productsService.addNewProduct(this.product).then(() => {
       this.router.navigateByUrl('/dashboard/products');
     });
   }

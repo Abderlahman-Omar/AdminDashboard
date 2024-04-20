@@ -9,6 +9,32 @@ import { ProductsService } from '../../../services/products.service';
   styleUrl: './product-details.component.css',
 })
 export class ProductDetailsComponent implements OnInit {
+  // productDetails: any;
+  // productId: any;
+  // constructor(
+  //   private httpClient: HttpClient,
+  //   private activatedRoute: ActivatedRoute,
+  //   private productService: ProductsService
+  // ) {}
+  // ngOnInit(): void {
+  //   this.activatedRoute.paramMap.subscribe((params) => {
+  //     // console.log(params.get('id'));
+  //     this.productId = params.get('id');
+  //   });
+  //   this.productService.getProductDetails(this.productId).subscribe({
+  //     next: (response) => {
+  //       console.log(response);
+  //       this.productDetails = response;
+  //     },
+  //   });
+  //   // this.productService.getProductDetails(this.productId).subscribe({
+  //   //   next: (response) => {
+  //   //     console.log(response.data);
+  //   //     this.productDetails = response.data;
+  //   //   },
+  //   // });
+  // }
+  /////////////////////////////////////////////
   productDetails: any;
   productId: any;
   constructor(
@@ -21,11 +47,9 @@ export class ProductDetailsComponent implements OnInit {
       // console.log(params.get('id'));
       this.productId = params.get('id');
     });
-    this.productService.getProductDetails(this.productId).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.productDetails = response;
-      },
+    this.productService.getSingleProduct(this.productId).then((response) => {
+      console.log(response.productData);
+      this.productDetails = response.productData;
     });
     // this.productService.getProductDetails(this.productId).subscribe({
     //   next: (response) => {
