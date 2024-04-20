@@ -5,6 +5,9 @@ import { Observable, catchError, retry, throwError } from 'rxjs';
 import { IProduct } from '../Interfaces/iproduct';
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
 import { environment } from '../shared/environments/environment.development';
+import { Brand } from '../Interfaces/Brand';
+import { Seller } from '../Interfaces/Seller';
+import { Filter } from '../Interfaces/Filter';
 
 @Injectable({
   providedIn: 'root',
@@ -85,7 +88,42 @@ export class ProductsService {
       .order('id', { ascending: true })
       .range(start, end)
       .returns<IProduct[]>();
-    return { productsData, error };
+    const { count } = await this.supabase
+      .from('products')
+      .select('*', { count: 'exact', head: true });
+    return { productsData, count, error };
+  }
+
+  // get All data
+  async searchFilterProduct(filter: Filter) {
+    const start = (filter.pageIdx - 1) * this.pageSize;
+    const end = start + this.pageSize - 1;
+    const { data: productsData, error } = await this.supabase
+      .from('products')
+      .select('*')
+      .like('title', filter.query ? `%${filter.query}%` : '%%')
+      .is('isBestSeller', filter.isBestSeller)
+      .is('isGiftable', filter.isGiftable)
+      .gt('quantity', filter.onlyAvailabe ? 0 : -1)
+      .in('returnPolicy', filter.returnIdxList)
+      .order('id', { ascending: true })
+      .gte('originalPrice', filter.priceMin ?? 0)
+      .lte('originalPrice', filter.priceMax ?? 10000)
+      .range(start, end)
+      .returns<IProduct[]>();
+
+    const { count } = await this.supabase
+      .from('products')
+      .select('*', { count: 'exact', head: true })
+      .like('title', filter.query ? `%${filter.query}%` : '')
+      .is('isBestSeller', filter.isBestSeller)
+      .is('isGiftable', filter.isGiftable)
+      .gt('quantity', filter.onlyAvailabe ? 0 : -1)
+      .in('returnPolicy', filter.returnIdxList)
+      .order('id', { ascending: true })
+      .gte('originalPrice', filter.priceMin ?? 0)
+      .lte('originalPrice', filter.priceMax ?? 10000);
+    return { productsData, count, error };
   }
 
   // get single data by Id
@@ -96,6 +134,23 @@ export class ProductsService {
       .eq('id', id)
       .single();
     return { productData, error };
+  }
+
+  async getProductBrand(id: string) {
+    const { data: brandData, error } = await this.supabase
+      .from('brands')
+      .select()
+      .eq('id', id)
+      .single<Brand>();
+    return { brandData, error };
+  }
+  async getProductSeller(id: string) {
+    const { data: sellerData, error } = await this.supabase
+      .from('sellers')
+      .select()
+      .eq('id', id)
+      .single<Seller>();
+    return { sellerData, error };
   }
 
   // add new data
@@ -111,8 +166,7 @@ export class ProductsService {
   async updateProduct(data: IProduct) {
     const { data: updatedData, error } = await this.supabase
       .from('products')
-      .update(data)
-      .match({ id: data.id });
+      .update(data);
     return { updatedData, error };
   }
 
