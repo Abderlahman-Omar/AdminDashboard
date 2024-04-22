@@ -1,10 +1,11 @@
-import { IProduct } from './iproduct';
-
 export interface Order {
-  id: string;
+  id: number;
   userId: string;
-  product: IProduct;
-  quantity: number;
+  productId: string;
   status: string;
   pickUpOtions: number;
+  quantity: number;
+  createdAt: Date;
+  lastEditAt: Date;
+  arrivingAt: Date;
 }

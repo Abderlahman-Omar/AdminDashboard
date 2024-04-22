@@ -9,6 +9,8 @@ import {
   ApexTitleSubtitle,
   ApexXAxis,
 } from 'ng-apexcharts';
+import { Order } from '../../../../Interfaces/Order';
+import { OrdersService } from '../../../../services/Orders.service';
 @Component({
   selector: 'app-line-column',
   templateUrl: './line-column.component.html',
@@ -20,13 +22,57 @@ export class LineColumnComponent implements OnInit {
   xaxis!: ApexXAxis;
   yaxis!: ApexYAxis | ApexYAxis[];
   title!: ApexTitleSubtitle;
+  subtitle!: ApexTitleSubtitle;
   labels!: string[];
   stroke!: any; // ApexStroke;
   dataLabels!: any; // ApexDataLabels;
   fill!: ApexFill;
   tooltip!: ApexTooltip;
+  orderList: Order[] = [];
+  lastOrder: any;
+  confirmedOrders: string[] = [];
+  shippedOrders: string[] = [];
+  unconfirmedOrders: string[] = [];
+  constructor(private ordersService: OrdersService) {}
+
   ngOnInit(): void {
-    this.initializeChartOptions();
+    this.updateLocalData();
+  }
+
+  async updateLocalData() {
+    const { ordersData, error } = await this.ordersService.getAllOrders();
+    if (ordersData) {
+      this.orderList = ordersData;
+      if (this.orderList.length > 0) {
+        this.lastOrder = this.orderList[this.orderList.length - 1].createdAt;
+      } else {
+        this.lastOrder = 'No orders available';
+      }
+      // console.log(this.lastOrder);
+      // console.log(this.orderList);
+      this.orderList.map((order) => {
+        // console.log(order.status);
+        if (order.status === 'Confirmed') {
+          // console.log(order.status);
+          this.confirmedOrders.push(order.status);
+          // console.log(this.confirmedOrders);
+        }
+        if (order.status === 'Shipped') {
+          // console.log(order.status);
+          this.shippedOrders.push(order.status);
+          // console.log(this.shippedOrders);
+        }
+        if (order.status === 'Unconfirmed') {
+          // console.log(order.status);
+          this.unconfirmedOrders.push(order.status);
+          // console.log(this.unconfirmedOrders);
+        }
+      });
+
+      this.initializeChartOptions();
+    } else if (error) {
+      console.error('Failed to fetch orders:', error);
+    }
   }
   private initializeChartOptions(): void {
     (this.series = [
@@ -49,7 +95,10 @@ export class LineColumnComponent implements OnInit {
         width: [0, 4],
       }),
       (this.title = {
-        text: 'Traffic Sources',
+        text: `${this.confirmedOrders.length}`,
+      }),
+      (this.subtitle = {
+        text: 'Total Confirmed Orders',
       }),
       (this.dataLabels = {
         enabled: true,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -10,7 +11,14 @@ import {
   ApexXAxis,
   ApexPlotOptions,
   ApexStroke,
+  ApexTitleSubtitle,
 } from 'ng-apexcharts';
+import { RatesService } from '../../../../services/Rates.service';
+import { SubCategoriesService } from '../../../../services/SubCategories.service';
+import { ProductsService } from '../../../../services/products.service';
+import { Filter } from '../../../../Interfaces/Filter';
+import { Rate } from '../../../../Interfaces/Rate';
+import { IProduct } from '../../../../Interfaces/iproduct';
 @Component({
   selector: 'app-line-area',
   templateUrl: './line-area.component.html',
@@ -26,9 +34,51 @@ export class LineAreaComponent implements OnInit {
   markers!: ApexMarkers;
   fill!: ApexFill;
   tooltip!: ApexTooltip;
+  title!: ApexTitleSubtitle;
+  subtitle!: ApexTitleSubtitle;
+  productsList: IProduct[] = [];
+  productsQuantity: number[] = [];
+  totalQuantity: number = 0;
+  subList: number[] = [];
+  ratesList: Rate[] = [];
+  rateAvrList: number[] = [];
+  isLoadingPage: boolean = true;
+  currentPage: number = 1;
+  currentCount: number = 0;
+  isFiltered: boolean = false;
+  filter: Filter = {
+    query: undefined,
+    priceMin: undefined,
+    priceMax: undefined,
+    isBestSeller: false,
+    isGiftable: false,
+    onlyAvailabe: false,
+    returnIdxList: [0, 1, 2, 3],
+    pageIdx: 1,
+  };
+  filterTapOpen: boolean = false;
+  constructor(private myService: ProductsService) {}
   ngOnInit(): void {
-    this.initializeChartOptions();
+    this.updateLocalData();
   }
+  async updateLocalData() {
+    const { productsData, error } = await this.myService.getAllProducts();
+    if (productsData) {
+      this.productsList = productsData;
+
+      this.productsList.map((product) => {
+        if (product.quantity > 0) {
+          this.productsQuantity.push(Number(product.quantity));
+        }
+      });
+      this.totalQuantity = this.productsQuantity.reduce(
+        (total, qty) => total + qty
+      );
+
+      this.initializeChartOptions();
+    }
+  }
+
   private initializeChartOptions(): void {
     (this.series = [
       {
@@ -85,6 +135,21 @@ export class LineAreaComponent implements OnInit {
       (this.xaxis = {
         labels: {
           trim: false,
+        },
+      }),
+      (this.title = {
+        text: `${this.totalQuantity}`,
+        offsetX: 0,
+        style: {
+          fontSize: '20px',
+        },
+      }),
+      (this.subtitle = {
+        // text: this.confirmedOrders.length,
+        text: 'Available Products',
+        offsetX: 0,
+        style: {
+          fontSize: '14px',
         },
       }),
       (this.tooltip = {

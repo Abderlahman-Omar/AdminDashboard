@@ -93,6 +93,17 @@ export class ProductsService {
       .select('*', { count: 'exact', head: true });
     return { productsData, count, error };
   }
+  async getAllProducts() {
+    const { data: productsData, error } = await this.supabase
+      .from('products')
+      .select('*')
+      .order('id', { ascending: true })
+      .returns<IProduct[]>();
+    const { count } = await this.supabase
+      .from('products')
+      .select('*', { count: 'exact', head: true });
+    return { productsData, count, error };
+  }
 
   // get All data
   async searchFilterProduct(filter: Filter) {

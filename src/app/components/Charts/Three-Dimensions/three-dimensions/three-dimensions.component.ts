@@ -11,6 +11,8 @@ import {
   ApexYAxis,
   ApexTitleSubtitle,
 } from 'ng-apexcharts';
+import { OrdersService } from '../../../../services/Orders.service';
+import { Order } from '../../../../Interfaces/Order';
 @Component({
   selector: 'app-three-dimensions',
   templateUrl: './three-dimensions.component.html',
@@ -22,12 +24,57 @@ export class ThreeDimensionsComponent implements OnInit {
   xaxis!: ApexXAxis;
   yaxis!: ApexYAxis;
   title!: ApexTitleSubtitle;
+  subtitle!: ApexTitleSubtitle;
+
   fill!: ApexFill;
   tooltip!: ApexTooltip;
   dataLabels!: ApexDataLabels;
   theme!: ApexTheme;
+  orderList: Order[] = [];
+  lastOrder: any;
+  confirmedOrders: string[] = [];
+  shippedOrders: string[] = [];
+  unconfirmedOrders: string[] = [];
+  constructor(private ordersService: OrdersService) {}
+
   ngOnInit(): void {
-    this.initializeChartOptions();
+    this.updateLocalData();
+  }
+
+  async updateLocalData() {
+    const { ordersData, error } = await this.ordersService.getAllOrders();
+    if (ordersData) {
+      this.orderList = ordersData;
+      if (this.orderList.length > 0) {
+        this.lastOrder = this.orderList[this.orderList.length - 1].createdAt;
+      } else {
+        this.lastOrder = 'No orders available';
+      }
+      // console.log(this.lastOrder);
+      // console.log(this.orderList);
+      this.orderList.map((order) => {
+        // console.log(order.status);
+        if (order.status === 'Confirmed') {
+          // console.log(order.status);
+          this.confirmedOrders.push(order.status);
+          // console.log(this.confirmedOrders);
+        }
+        if (order.status === 'Shipped') {
+          // console.log(order.status);
+          this.shippedOrders.push(order.status);
+          // console.log(this.shippedOrders);
+        }
+        if (order.status === 'Unconfirmed') {
+          // console.log(order.status);
+          this.unconfirmedOrders.push(order.status);
+          // console.log(this.unconfirmedOrders);
+        }
+      });
+
+      this.initializeChartOptions();
+    } else if (error) {
+      console.error('Failed to fetch orders:', error);
+    }
   }
   private initializeChartOptions(): void {
     (this.series = [
@@ -71,7 +118,10 @@ export class ThreeDimensionsComponent implements OnInit {
         type: 'gradient',
       }),
       (this.title = {
-        text: '3D Bubble Chart',
+        text: `${this.orderList.length}`,
+      }),
+      (this.subtitle = {
+        text: 'Total Orders',
       }),
       (this.xaxis = {
         tickAmount: 12,

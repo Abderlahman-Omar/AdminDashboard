@@ -9,7 +9,10 @@ import {
   ApexMarkers,
   ApexXAxis,
   ApexPlotOptions,
+  ApexTitleSubtitle,
 } from 'ng-apexcharts';
+import { Seller } from '../../../../Interfaces/Seller';
+import { SellersService } from '../../../../services/Sellers.service';
 @Component({
   selector: 'app-line-column-area',
   templateUrl: './line-column-area.component.html',
@@ -26,8 +29,29 @@ export class LineColumnAreaComponent implements OnInit {
   plotOptions!: ApexPlotOptions;
   fill!: ApexFill;
   tooltip!: ApexTooltip;
+  title!: ApexTitleSubtitle;
+  subtitle!: ApexTitleSubtitle;
+  sellersList: Seller[] = [];
+  topSellers: Seller[] = [];
+  constructor(private sellersService: SellersService) {}
   ngOnInit(): void {
-    this.initializeChartOptions();
+    this.updateLocalData();
+  }
+  async updateLocalData() {
+    const { sellerData, error } = await this.sellersService.getAllSellers();
+    if (sellerData) {
+      this.sellersList = sellerData;
+      // console.log(this.sellersList);
+
+      this.sellersList.map((seller) => {
+        if (seller.rate === 5) {
+          this.topSellers.push(seller);
+        }
+      });
+      console.log(this.topSellers);
+
+      this.initializeChartOptions();
+    }
   }
   private initializeChartOptions(): void {
     (this.series = [
@@ -70,6 +94,25 @@ export class LineColumnAreaComponent implements OnInit {
           opacityFrom: 0.85,
           opacityTo: 0.55,
           // stops: [0, 100, 100, 100]
+        },
+      }),
+      (this.title = {
+        text: `${this.topSellers[0].title}
+       
+
+        `,
+
+        offsetX: 0,
+        style: {
+          fontSize: '20px',
+        },
+      }),
+      (this.subtitle = {
+        // text: this.confirmedOrders.length,
+        text: ' Overall Top Seller',
+        offsetX: 0,
+        style: {
+          fontSize: '14px',
         },
       }),
       (this.labels = [
