@@ -177,7 +177,9 @@ export class ProductsService {
   async updateProduct(data: IProduct) {
     const { data: updatedData, error } = await this.supabase
       .from('products')
-      .update(data);
+      .update(data)
+      .match({ id: data.id });
+
     return { updatedData, error };
   }
 

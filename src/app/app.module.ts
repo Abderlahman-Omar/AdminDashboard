@@ -42,6 +42,7 @@ import { ThreeDimensionsComponent } from './components/Charts/Three-Dimensions/t
 import { RoundedHeatMapComponent } from './components/Charts/Rounded-Heat-Map/rounded-heat-map/rounded-heat-map.component';
 import { SparkLinesComponent } from './components/Charts/Spark-Lines/spark-lines/spark-lines.component';
 import { Modal, initFlowbite } from 'flowbite';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @NgModule({
   declarations: [

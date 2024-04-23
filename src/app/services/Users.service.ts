@@ -32,8 +32,30 @@ export class UsersService {
       .from('users')
       .select()
       .eq('id', id)
-      .single();
+      .single<User>();
     return { userData, error };
+  }
+  async checkCreds(email: string, pass: string) {
+    const { data: userData, error } = await this.supabase
+      .from('users')
+      .select()
+      .eq('email', email)
+      .eq('password', pass)
+      .single<User>();
+    return { userData, error };
+  }
+  async checkStatus(id: string) {
+    const { data: isSeller, error: e1 } = await this.supabase
+      .from('users')
+      .select('isSeller')
+      .eq('id', id)
+      .single<boolean>();
+    const { data: isAdmin, error: e2 } = await this.supabase
+      .from('users')
+      .select('isAdmin')
+      .eq('id', id)
+      .single<boolean>();
+    return { isSeller, isAdmin };
   }
 
   // add new data

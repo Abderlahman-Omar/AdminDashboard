@@ -41,7 +41,7 @@ export class SubCategoriesPageComponent implements OnInit {
       .getSingleSubCategory(this.subCategoryId)
       .then((response) => {
         this.subCategoryDetails = response.subCategoryData;
-        console.log(this.subCategoryDetails);
+        // console.log(this.subCategoryDetails);
       });
   }
 }

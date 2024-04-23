@@ -97,7 +97,7 @@ export class UpdateProductPageComponent implements OnInit {
   //       this.router.navigateByUrl('/dashboard/products');
   //     });
   // }
-  //////////////////////////////////////////////
+  //////////////////////////////////////////////z
   ngOnInit(): void {
     this.categoriesService.getAllCategories().then((response) => {
       // console.log(response.categoriesData);
