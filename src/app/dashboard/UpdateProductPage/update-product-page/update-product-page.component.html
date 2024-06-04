@@ -1,4 +1,4 @@
-<section class="bg-white dark:bg-gray-900">
+<!-- <section class="bg-white dark:bg-gray-900">
   <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
     <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
       Update Product
@@ -69,6 +69,259 @@
             [(ngModel)]="product.originalPrice"
             required=""
           />
+        </div>
+      </div>
+      <button
+        [disabled]="addProductForm.invalid"
+        type="submit"
+        class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-emerald-400 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-800"
+      >
+        <svg
+          class="w-6 h-6 text-white-800 dark:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"
+          />
+        </svg>
+        Update
+      </button>
+    </form>
+  </div>
+</section> -->
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+    <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+      Add a new product
+    </h2>
+    <form #addProductForm="ngForm" (ngSubmit)="updateProduct()">
+      <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <div class="sm:col-span-2">
+          <label
+            for="name"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Product Name</label
+          >
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Type product name"
+            [(ngModel)]="product.title"
+            required=""
+          />
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="category"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Category</label
+          >
+          <select
+            [(ngModel)]="product.subCatergory"
+            name="category"
+            id="category"
+          >
+            @for (category of categories; track $index) {
+            <option value="{{ category.id }}">{{ category.title }}</option>
+            }
+          </select>
+        </div>
+        <div class="w-full">
+          <label
+            for="id"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >ID
+          </label>
+          <input
+            type="text"
+            name="id"
+            id="id"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Product ID"
+            [(ngModel)]="product.id"
+            required=""
+          />
+        </div>
+        <div class="w-full">
+          <label
+            for="image"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Image URL
+          </label>
+          <input
+            type="text"
+            name="image"
+            id="image"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Product Image"
+            [(ngModel)]="product.images"
+            required=""
+          />
+        </div>
+        <div class="w-full">
+          <label
+            for="price"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Original Price</label
+          >
+          <input
+            type="number"
+            name="price"
+            id="price"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Product Price"
+            [(ngModel)]="product.originalPrice"
+            required=""
+          />
+        </div>
+        <div class="w-full">
+          <label
+            for="discount"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Discount(%)</label
+          >
+          <input
+            type="number"
+            name="discount"
+            id="discount"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Discount(%)"
+            [(ngModel)]="product.discount"
+            required=""
+          />
+        </div>
+        <div class="w-full">
+          <label
+            for="weight"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Weight</label
+          >
+          <input
+            type="number"
+            name="weight"
+            id="weight"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Weight"
+            [(ngModel)]="product.shippingWeight"
+            required=""
+          />
+        </div>
+        <div class="w-full">
+          <label
+            for="model"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Model Number</label
+          >
+          <input
+            type="number"
+            name="model"
+            id="model"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Model Number"
+            [(ngModel)]="product.modelNumber"
+            required=""
+          />
+        </div>
+        <div class="w-full">
+          <label
+            for="quantity"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Quantity</label
+          >
+          <input
+            type="number"
+            name="quantity"
+            id="quantity"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Product Quantity"
+            [(ngModel)]="product.quantity"
+            required=""
+          />
+        </div>
+        <div class="w-full">
+          <label
+            for="policy"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Return Policy</label
+          >
+          <select [(ngModel)]="product.returnPolicy" name="policy" id="policy">
+            @for (policy of policyData; track $index) {
+            <option value="{{ policy.id }}">{{ policy.title }}</option>
+            }
+          </select>
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="description"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Description</label
+          >
+          <input
+            type="text"
+            name="description"
+            id="description"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Description"
+            [(ngModel)]="product.aboutProduct"
+            required=""
+          />
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="specifications"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Specifications</label
+          >
+          <input
+            type="text"
+            name="specifications"
+            id="specifications"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Specifications"
+            [(ngModel)]="product.productSpecification"
+            required=""
+          />
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="details"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Technical Details</label
+          >
+          <input
+            type="text"
+            name="details"
+            id="details"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            placeholder="Technical Details"
+            [(ngModel)]="product.technicalDetails"
+            required=""
+          />
+        </div>
+        <div class="flex items-center mr-4">
+          <input
+            [(ngModel)]="product.isGiftable"
+            id="inline-checkbox"
+            type="checkbox"
+            name="giftable"
+            class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          />
+          <label
+            for="inline-checkbox"
+            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >Is Giftable</label
+          >
         </div>
       </div>
       <button

@@ -119,9 +119,15 @@ export class ThreeDimensionsComponent implements OnInit {
       }),
       (this.title = {
         text: `${this.orderList.length}`,
+        style: {
+          fontSize: '20px',
+        },
       }),
       (this.subtitle = {
         text: 'Total Orders',
+        style: {
+          fontSize: '14px',
+        },
       }),
       (this.xaxis = {
         tickAmount: 12,

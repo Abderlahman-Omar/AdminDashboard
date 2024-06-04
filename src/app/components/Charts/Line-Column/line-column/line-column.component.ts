@@ -96,9 +96,15 @@ export class LineColumnComponent implements OnInit {
       }),
       (this.title = {
         text: `${this.confirmedOrders.length}`,
+        style: {
+          fontSize: '20px',
+        },
       }),
       (this.subtitle = {
         text: 'Total Confirmed Orders',
+        style: {
+          fontSize: '14px',
+        },
       }),
       (this.dataLabels = {
         enabled: true,
@@ -123,15 +129,15 @@ export class LineColumnComponent implements OnInit {
       }),
       (this.yaxis = [
         {
-          title: {
-            text: 'Website Blog',
-          },
+          // title: {
+          //   text: 'Website Blog',
+          // },
         },
         {
           opposite: true,
-          title: {
-            text: 'Social Media',
-          },
+          // title: {
+          //   text: 'Social Media',
+          // },
         },
       ]);
   }

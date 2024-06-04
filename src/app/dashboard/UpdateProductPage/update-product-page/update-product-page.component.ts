@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from '../../../Interfaces/iproduct';
 import { CategoriesService } from '../../../services/categories.service';
 import { ProductsService } from '../../../services/products.service';
+import { Policy, policyData } from '../../../Interfaces/Policy';
 
 @Component({
   selector: 'app-update-product-page',
@@ -63,6 +64,8 @@ export class UpdateProductPageComponent implements OnInit {
   //   this.productsService.updateProduct(this.product);
   // }
   /////////////////////////////
+  policyData: Policy[] = policyData;
+
   categories: any;
   product: IProduct = {} as IProduct;
   productId: any;

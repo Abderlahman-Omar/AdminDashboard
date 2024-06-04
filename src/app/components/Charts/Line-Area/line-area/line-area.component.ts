@@ -104,32 +104,32 @@ export class LineAreaComponent implements OnInit {
         opacity: [0.35, 1],
       }),
       (this.labels = [
-        'Dec 01',
-        'Dec 02',
-        'Dec 03',
-        'Dec 04',
-        'Dec 05',
-        'Dec 06',
-        'Dec 07',
-        'Dec 08',
-        'Dec 09 ',
-        'Dec 10',
-        'Dec 11',
+        'Apr 01',
+        'Apr 02',
+        'Apr 03',
+        'Apr 04',
+        'Apr 05',
+        'Apr 06',
+        'Apr 07',
+        'Apr 08',
+        'Apr 09 ',
+        'Apr 10',
+        'Apr 11',
       ]),
       (this.markers = {
         size: 0,
       }),
       (this.yaxis = [
         {
-          title: {
-            text: 'Series A',
-          },
+          // title: {
+          //   text: 'Series A',
+          // },
         },
         {
           opposite: true,
-          title: {
-            text: 'Series B',
-          },
+          // title: {
+          //   text: 'Series B',
+          // },
         },
       ]),
       (this.xaxis = {

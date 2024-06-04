@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from '../../../services/categories.service';
 import { ProductsService } from '../../../services/products.service';
 import { IProduct } from '../../../Interfaces/iproduct';
+import { Policy, policyData } from '../../../Interfaces/Policy';
 
 @Component({
   selector: 'app-add-product-page',
@@ -32,6 +33,8 @@ export class AddProductPageComponent implements OnInit {
   //   });
   // }
   ////////////////////////////////////////////////
+  policyData: Policy[] = policyData;
+
   categories: any;
   product: IProduct = {} as IProduct;
   productId: any;

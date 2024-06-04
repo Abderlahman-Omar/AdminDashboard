@@ -21,59 +21,59 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   {
     path: 'dashboard',
-    canActivate: [authGuardGuard],
+    // canActivate: [authGuardGuard],
 
     component: MainLayoutComponent,
     children: [
       {
         path: 'home',
-        canActivate: [authGuardGuard],
+        // canActivate: [authGuardGuard],
         component: HomePageComponent,
       },
       {
         path: 'ads',
-        canActivate: [authGuardGuard],
+        // canActivate: [authGuardGuard],
         component: AdsPageComponent,
       },
       {
         path: 'departments',
-        canActivate: [authGuardGuard],
+        // canActivate: [authGuardGuard],
         component: DepartmentsPageComponent,
       },
       {
         path: 'orders',
-        canActivate: [authGuardGuard],
+        // canActivate: [authGuardGuard],
         component: OrdersPageComponent,
       },
       {
         path: 'products',
-        canActivate: [authGuardGuard],
+        // canActivate: [authGuardGuard],
         component: ProductsPageComponent,
       },
       {
         path: 'productsdetails/:id',
-        canActivate: [authGuardGuard],
+        // canActivate: [authGuardGuard],
         component: ProductDetailsComponent,
       },
       {
         path: 'addproduct',
-        canActivate: [authGuardGuard],
+        // canActivate: [authGuardGuard],
         component: AddProductPageComponent,
       },
       {
         path: 'updateproduct/:id',
-        canActivate: [authGuardGuard],
+        // canActivate: [authGuardGuard],
         component: UpdateProductPageComponent,
       },
 
       {
         path: 'categories/:id',
-        canActivate: [authGuardGuard],
+        // canActivate: [authGuardGuard],
         component: CategoriesPageComponent,
       },
       {
         path: 'subcategories/:id',
-        canActivate: [authGuardGuard],
+        // canActivate: [authGuardGuard],
         component: SubCategoriesPageComponent,
       },
       { path: 'users', component: UsersPageComponent },
